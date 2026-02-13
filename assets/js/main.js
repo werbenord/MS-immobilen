@@ -169,4 +169,17 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+
+  // Footer behavior
+  const footerYear = document.getElementById("mf-year");
+  if (footerYear) {
+    footerYear.textContent = String(new Date().getFullYear());
+  }
+
+  const footerForms = document.querySelectorAll(".mf-form");
+  footerForms.forEach((form) => {
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+    });
+  });
 });
