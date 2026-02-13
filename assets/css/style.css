@@ -865,3 +865,672 @@ a:hover{
   font-size:16px;
   line-height:1;
 }
+
+/* =========================
+   VIDEO BANNER SECTION
+   ========================= */
+.ms-video-banner {
+  padding: 22px 0;
+  font-family: "Mona Sans", ui-sans-serif, system-ui, -apple-system, Segoe UI,
+    Roboto, Arial, "Noto Sans";
+}
+
+.ms-video-banner__wrap {
+  width: min(1280px, calc(100% - 48px));
+  margin: 0 auto;
+  border-radius: 26px;
+  overflow: hidden;
+  position: relative;
+  min-height: 560px;
+  background-image: var(--msvb-bg);
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 14px 40px rgba(16, 24, 40, 0.08);
+  border: 1px solid rgba(47, 51, 54, 0.08);
+  isolation: isolate;
+}
+
+.ms-video-banner__wrap--default {
+  --msvb-bg: url("https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?auto=format&fit=crop&w=2400&q=80");
+  --msvb-accent: #2f3336;
+}
+
+/* Overlay for readability */
+.ms-video-banner__wrap::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+      1200px 520px at 22% 78%,
+      rgba(0, 0, 0, 0.62),
+      rgba(0, 0, 0, 0) 60%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.08) 0%,
+      rgba(0, 0, 0, 0.18) 55%,
+      rgba(0, 0, 0, 0.3) 100%
+    );
+  z-index: 0;
+}
+
+.ms-video-banner__content {
+  position: absolute;
+  left: 46px;
+  bottom: 44px;
+  z-index: 1;
+  max-width: 720px;
+}
+
+.ms-video-banner__pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(47, 51, 54, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: #fff;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.2px;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.ms-video-banner__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--msvb-accent);
+  box-shadow: 0 0 0 4px rgba(47, 51, 54, 0.16);
+}
+
+.ms-video-banner__title {
+  margin: 14px 0 0;
+  color: #fff;
+  font-size: clamp(30px, 4.1vw, 56px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  font-weight: 750;
+}
+
+.ms-video-banner__title em {
+  font-style: italic;
+  font-weight: 750;
+}
+
+/* Orb button */
+.ms-video-banner__orb {
+  position: absolute;
+  right: 42px;
+  bottom: 38px;
+  width: 152px;
+  height: 152px;
+  border-radius: 999px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  padding: 0;
+}
+
+.ms-video-banner__orbText {
+  width: 152px;
+  height: 152px;
+  overflow: visible;
+  animation: msvb-spin 10s linear infinite;
+}
+
+.ms-video-banner__orbText text {
+  fill: rgba(255, 255, 255, 0.86);
+  font-size: 12.5px;
+  letter-spacing: 2.2px;
+  font-weight: 650;
+  text-transform: uppercase;
+}
+
+.ms-video-banner__orbCore {
+  position: absolute;
+  width: 52px;
+  height: 52px;
+  border-radius: 999px;
+  background: var(--msvb-accent);
+  display: grid;
+  place-items: center;
+  color: #fff;
+  box-shadow: 0 10px 22px rgba(13, 22, 23, 0.18);
+  transition: transform 0.18s ease, filter 0.18s ease;
+}
+
+.ms-video-banner__orb:hover .ms-video-banner__orbCore {
+  transform: scale(1.06);
+  filter: brightness(1.02);
+}
+
+@keyframes msvb-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Modal */
+.ms-video-banner__modal {
+  width: min(980px, calc(100% - 32px));
+  border: 0;
+  border-radius: 18px;
+  padding: 0;
+  overflow: hidden;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+}
+
+.ms-video-banner__modal::backdrop {
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
+}
+
+.ms-video-banner__modalTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  background: #2f3336;
+  color: #fff;
+}
+
+.ms-video-banner__modalTitle {
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  font-size: 14px;
+}
+
+.ms-video-banner__close {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  cursor: pointer;
+}
+
+.ms-video-banner__frame {
+  background: #000;
+  aspect-ratio: 16 / 9;
+  width: 100%;
+}
+
+.ms-video-banner__frame iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+/* Responsive */
+@media (max-width: 920px) {
+  .ms-video-banner__wrap {
+    min-height: 520px;
+  }
+  .ms-video-banner__content {
+    left: 22px;
+    bottom: 22px;
+    right: 22px;
+  }
+  .ms-video-banner__orb {
+    right: 18px;
+    bottom: 18px;
+    transform: scale(0.92);
+  }
+}
+
+@media (max-width: 520px) {
+  .ms-video-banner__wrap {
+    min-height: 520px;
+  }
+  .ms-video-banner__orb {
+    display: none;
+  }
+}
+
+/* =========================
+   FAQ SECTION
+   ========================= */
+.ms-faq {
+  padding: 88px 0;
+  font-family: "Mona Sans", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+    Arial, "Noto Sans";
+  color: #2f3336;
+  background: #fff;
+}
+.ms-faq__wrap {
+  width: min(1280px, calc(100% - 48px));
+  margin: 0 auto;
+}
+.ms-faq__wrap--default {
+  --msfaq-accent: #2f3336;
+}
+.ms-faq__grid {
+  display: grid;
+  grid-template-columns: 1.05fr 1.35fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.ms-faq__kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(47, 51, 54, 0.04);
+  border: 1px solid rgba(47, 51, 54, 0.10);
+  font-weight: 650;
+  font-size: 13px;
+  letter-spacing: .2px;
+}
+.ms-faq__kdot {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--msfaq-accent);
+  box-shadow: 0 0 0 4px rgba(47, 51, 54, .14);
+}
+
+.ms-faq__title {
+  margin: 22px 0 0;
+  font-size: clamp(34px, 3.6vw, 56px);
+  line-height: 1.03;
+  letter-spacing: -0.03em;
+  font-weight: 820;
+}
+.ms-faq__title em {
+  font-style: italic;
+  font-weight: 820;
+}
+
+.ms-faq__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 26px;
+  padding: 14px 18px;
+  border-radius: 999px;
+  background: #0f1416;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 750;
+  box-shadow: 0 14px 30px rgba(15, 20, 22, .18);
+}
+.ms-faq__cta:hover {
+  transform: translateY(-1px);
+}
+.ms-faq__arrow {
+  opacity: .9;
+}
+
+.ms-faq__rule {
+  height: 1px;
+  background: rgba(47, 51, 54, .12);
+  margin: 34px 0 22px;
+  width: min(520px, 100%);
+}
+
+.ms-faq__foot {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+.ms-faq__avatars {
+  display: flex;
+  align-items: center;
+}
+.ms-faq__av {
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  background-size: cover;
+  background-position: center;
+  border: 2px solid #fff;
+  box-shadow: 0 10px 24px rgba(16, 24, 40, .10);
+  margin-left: -10px;
+}
+.ms-faq__av:first-child {
+  margin-left: 0;
+}
+.ms-faq__av--1 {
+  background-image: url("https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=facearea&w=120&h=120&q=80&facepad=2");
+}
+.ms-faq__av--2 {
+  background-image: url("https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=facearea&w=120&h=120&q=80&facepad=2");
+}
+.ms-faq__av--3 {
+  background-image: url("https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=facearea&w=120&h=120&q=80&facepad=2");
+}
+.ms-faq__plus {
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  background: var(--msfaq-accent);
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-weight: 900;
+  margin-left: -10px;
+  box-shadow: 0 14px 30px rgba(47, 51, 54, .18);
+}
+.ms-faq__note {
+  margin: 0;
+  color: rgba(47, 51, 54, .78);
+  font-weight: 650;
+  line-height: 1.35;
+}
+
+/* Accordion */
+.ms-faq__right {
+  display: grid;
+  gap: 16px;
+}
+.ms-faq__item {
+  border-radius: 14px;
+  border: 1px solid rgba(47, 51, 54, .12);
+  background: #fff;
+  overflow: hidden;
+  box-shadow: 0 10px 24px rgba(16, 24, 40, .04);
+}
+.ms-faq__q {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 18px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  text-align: left;
+  color: #2f3336;
+}
+.ms-faq__qtext {
+  font-weight: 800;
+  letter-spacing: -.01em;
+  font-size: 15px;
+}
+.ms-faq__n {
+  color: rgba(47, 51, 54, .55);
+  font-weight: 850;
+  margin-right: 8px;
+}
+.ms-faq__icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  border: 1px solid rgba(47, 51, 54, .14);
+  color: #2f3336;
+  flex: 0 0 auto;
+}
+
+.ms-faq__a {
+  padding: 0 18px 18px;
+  color: rgba(47, 51, 54, .82);
+  font-weight: 650;
+  line-height: 1.55;
+}
+.ms-faq__a p {
+  margin: 0 0 10px;
+}
+.ms-faq__a ul {
+  margin: 10px 0 0;
+  padding-left: 18px;
+}
+.ms-faq__a li {
+  margin: 6px 0;
+}
+
+/* Open (dark) */
+.ms-faq__item.is-open {
+  background: linear-gradient(180deg, #0f1416 0%, #2b3136 100%);
+  border-color: rgba(255, 255, 255, .12);
+  box-shadow: 0 18px 40px rgba(15, 20, 22, .26);
+}
+.ms-faq__item.is-open .ms-faq__q,
+.ms-faq__item.is-open .ms-faq__a {
+  color: #fff;
+}
+.ms-faq__item.is-open .ms-faq__n {
+  color: rgba(255, 255, 255, .66);
+}
+.ms-faq__item.is-open .ms-faq__icon {
+  border-color: rgba(255, 255, 255, .18);
+  color: #fff;
+  background: rgba(255, 255, 255, .04);
+}
+.ms-faq__item.is-open .ms-faq__a {
+  color: rgba(255, 255, 255, .86);
+}
+
+/* Responsive */
+@media (max-width: 980px) {
+  .ms-faq {
+    padding: 70px 0;
+  }
+  .ms-faq__grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .ms-faq__rule {
+    width: 100%;
+  }
+}
+
+/* =========================
+   TESTIMONIALS SECTION
+   ========================= */
+.ms-tst {
+  padding: 92px 0;
+  font-family: "Mona Sans", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+    Arial, "Noto Sans";
+  color: #2f3336;
+  background: #fff;
+}
+.ms-tst__wrap {
+  width: min(1280px, calc(100% - 48px));
+  margin: 0 auto;
+}
+.ms-tst__wrap--default {
+  --mst-accent: #2f3336;
+}
+
+.ms-tst__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.ms-tst__kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(47, 51, 54, .04);
+  border: 1px solid rgba(47, 51, 54, .10);
+  font-weight: 650;
+  font-size: 13px;
+  letter-spacing: .2px;
+}
+.ms-tst__kdot {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--mst-accent);
+  box-shadow: 0 0 0 4px rgba(47, 51, 54, .14);
+}
+
+.ms-tst__title {
+  margin: 22px 0 0;
+  font-size: clamp(34px, 3.4vw, 56px);
+  line-height: 1.03;
+  letter-spacing: -0.03em;
+  font-weight: 840;
+}
+.ms-tst__title em {
+  font-style: italic;
+  font-weight: 840;
+}
+
+.ms-tst__topRight {
+  max-width: 520px;
+  padding-top: 10px;
+}
+.ms-tst__desc {
+  margin: 0 0 18px;
+  color: rgba(47, 51, 54, .78);
+  font-weight: 650;
+  line-height: 1.55;
+}
+.ms-tst__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+  border-radius: 999px;
+  background: #0f1416;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 750;
+  box-shadow: 0 14px 30px rgba(15, 20, 22, .18);
+}
+.ms-tst__cta:hover {
+  transform: translateY(-1px);
+}
+.ms-tst__arrow {
+  opacity: .9;
+}
+
+.ms-tst__cards {
+  margin-top: 34px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.ms-tst__card {
+  background: rgba(47, 51, 54, .03);
+  border: 1px solid rgba(47, 51, 54, .08);
+  border-radius: 18px;
+  padding: 22px 22px 18px;
+  box-shadow: 0 12px 28px rgba(16, 24, 40, .05);
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.ms-tst__cardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.ms-tst__stars {
+  display: inline-flex;
+  gap: 6px;
+}
+.ms-tst__star {
+  width: 16px;
+  height: 16px;
+  background: var(--mst-accent);
+  -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M12 17.3l-6.18 3.74 1.64-7.03L2 9.24l7.19-.61L12 2l2.81 6.63 7.19.61-5.46 4.77 1.64 7.03L12 17.3z\"/></svg>")
+    center/contain no-repeat;
+  mask: url("data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M12 17.3l-6.18 3.74 1.64-7.03L2 9.24l7.19-.61L12 2l2.81 6.63 7.19.61-5.46 4.77 1.64 7.03L12 17.3z\"/></svg>")
+    center/contain no-repeat;
+  box-shadow: 0 10px 20px rgba(47, 51, 54, .12);
+  border-radius: 2px;
+}
+
+.ms-tst__quote {
+  color: rgba(47, 51, 54, .25);
+}
+
+.ms-tst__text {
+  margin: 18px 0 0;
+  color: rgba(47, 51, 54, .76);
+  font-weight: 650;
+  line-height: 1.65;
+}
+
+.ms-tst__divider {
+  height: 1px;
+  background: rgba(47, 51, 54, .12);
+  margin: 18px 0 14px;
+}
+
+.ms-tst__person {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.ms-tst__avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  background-size: cover;
+  background-position: center;
+  border: 2px solid #fff;
+  box-shadow: 0 10px 24px rgba(16, 24, 40, .10);
+}
+.ms-tst__avatar--1 {
+  background-image: url("https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=facearea&w=120&h=120&q=80&facepad=2");
+}
+.ms-tst__avatar--2 {
+  background-image: url("https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=facearea&w=120&h=120&q=80&facepad=2");
+}
+.ms-tst__avatar--3 {
+  background-image: url("https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=facearea&w=120&h=120&q=80&facepad=2");
+}
+.ms-tst__name {
+  margin: 0;
+  font-weight: 850;
+  letter-spacing: -.01em;
+}
+.ms-tst__role {
+  margin: 2px 0 0;
+  color: rgba(47, 51, 54, .70);
+  font-weight: 650;
+  font-size: 13px;
+}
+
+/* Responsive */
+@media (max-width: 980px) {
+  .ms-tst {
+    padding: 74px 0;
+  }
+  .ms-tst__top {
+    flex-direction: column;
+    gap: 18px;
+  }
+  .ms-tst__topRight {
+    max-width: unset;
+  }
+  .ms-tst__cards {
+    grid-template-columns: 1fr;
+  }
+  .ms-tst__card {
+    min-height: unset;
+  }
+}
+
+@media (min-width: 981px) and (max-width: 1220px) {
+  .ms-tst__cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
