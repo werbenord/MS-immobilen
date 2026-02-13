@@ -182,4 +182,11 @@ document.addEventListener("DOMContentLoaded", () => {
       event.preventDefault();
     });
   });
+
+  const contactForms = document.querySelectorAll(".contact-form");
+  contactForms.forEach((form) => {
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+    });
+  });
 });
